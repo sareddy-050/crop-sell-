@@ -1,0 +1,253 @@
+:root {
+    --bg: #0b1020;
+    --card: #121832;
+    --muted: #9aa4b2;
+    --text: #e6eaf0;
+    --primary: #4f8cff;
+    --primary-600: #3a70d8;
+    --danger: #ff5c5c;
+    --ring: rgba(79, 140, 255, 0.4);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    color: var(--text);
+    background: radial-gradient(1200px 800px at 80% -10%, #1d2a5e55, transparent 60%),
+                radial-gradient(1000px 700px at 10% 110%, #0ea5e955, transparent 60%),
+                var(--bg);
+}
+
+.login-page {
+    background:
+        linear-gradient(rgba(11,16,32,0.6), rgba(11,16,32,0.8)),
+        url('../assets/12.jpg') center/cover no-repeat fixed,
+        radial-gradient(1200px 800px at 80% -10%, #1d2a5e55, transparent 60%),
+        radial-gradient(1000px 700px at 10% 110%, #0ea5e955, transparent 60%),
+        var(--bg);
+}
+
+.container {
+    min-height: 100%;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.card {
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    backdrop-filter: blur(8px);
+}
+
+.title { margin: 0 0 6px; font-size: 28px; }
+.subtitle { margin: 0 0 18px; color: var(--muted); }
+
+.form { display: grid; gap: 14px; }
+.form-row { display: grid; gap: 8px; }
+.form-row label { color: var(--muted); font-size: 14px; }
+
+input, select {
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #0d1228;
+    color: var(--text);
+    outline: none;
+}
+input:focus, select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--ring);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
+    background: #0f1530;
+    color: var(--text);
+}
+.btn.primary {
+    background: linear-gradient(90deg, #0ea5e9 0%, #4f8cff 100%);
+    border-color: transparent;
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 2px 8px #4f8cff44;
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.btn.primary:hover {
+    background: linear-gradient(90deg, #4f8cff 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 16px #0ea5e944;
+}
+/* Hero section styles */
+.hero {
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto 24px auto;
+    text-align: center;
+    padding: 32px 18px 24px 18px;
+    background: linear-gradient(120deg, #4f8cff33 0%, #0ea5e933 100%);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(79,140,255,0.12);
+    animation: fadeInHero 1.2s;
+}
+.hero-title {
+    font-size: 38px;
+    font-weight: 700;
+    color: #4f8cff;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #0ea5e955;
+}
+.hero-desc {
+    font-size: 20px;
+    color: #e6eaf0;
+    margin-bottom: 0;
+    line-height: 1.5;
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+@keyframes fadeInHero {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.btn.full { width: 100%; }
+
+.error { color: var(--danger); min-height: 20px; margin: 8px 0 0; }
+.hint { margin-top: 10px; color: var(--muted); font-size: 14px; }
+
+.dashboard {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px;
+    /* Add farming background image for dashboards */
+    background:
+        linear-gradient(rgba(11,16,32,0.7), rgba(11,16,32,0.8)),
+        url('../assets/12.jpg') center/cover no-repeat fixed;
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(79,140,255,0.12);
+}
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.nav .brand { font-weight: 600; }
+
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+.panel { background: var(--card); padding: 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); }
+.muted { color: var(--muted); }
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(4px);
+}
+
+.modal {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 400px;
+    width: 100%;
+    max-width: 420px;
+    background: linear-gradient(180deg, #4f8cff11 0%, #0ea5e911 100%);
+    border: 1px solid #4f8cff33;
+    border-radius: 20px;
+    padding: 32px 28px 28px 28px;
+    box-shadow: 0 20px 50px rgba(79,140,255,0.10);
+    backdrop-filter: blur(10px);
+    animation: fadeInCard 1.2s;
+}
+@keyframes fadeInCard {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+.modal-overlay.show .modal {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--text);
+}
+
+.modal-content {
+    display: grid;
+    gap: 12px;
+}
+
+.contact-info {
+    display: grid;
+    gap: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.contact-label {
+    font-weight: 500;
+    min-width: 60px;
+    color: var(--muted);
+}
+
+.contact-value {
+    color: var(--text);
+}
+
+

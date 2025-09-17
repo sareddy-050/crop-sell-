@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Portal - Modern Template</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        body { font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif; }
+        .navbar-dark { background: #121832; }
+        .navbar-brand { font-weight: 700; font-size: 1.6rem; color: #4f8cff !important; letter-spacing: 1px; }
+        .nav-link { color: #e6eaf0 !important; font-weight: 500; }
+        .nav-link:hover { color: #0ea5e9 !important; text-shadow: 0 2px 8px #0ea5e955; }
+        .hero-section { background: linear-gradient(120deg, #4f8cff33 0%, #0ea5e933 100%); color: #e6eaf0; padding: 64px 0 48px 0; text-align: center; }
+        .hero-section h1 { font-size: 3rem; font-weight: 700; color: #4f8cff; text-shadow: 0 2px 8px #0ea5e955; }
+        .hero-section p { font-size: 1.3rem; margin-bottom: 32px; }
+        .btn-cta { font-size: 1.2rem; padding: 14px 32px; border-radius: 30px; background: linear-gradient(90deg, #0ea5e9 0%, #4f8cff 100%); color: #fff; font-weight: 600; box-shadow: 0 2px 8px #4f8cff44; transition: background 0.2s, box-shadow 0.2s; }
+        .btn-cta:hover { background: linear-gradient(90deg, #4f8cff 0%, #0ea5e9 100%); box-shadow: 0 4px 16px #0ea5e944; }
+        .about-section { background: #121832; color: #e6eaf0; padding: 48px 0; }
+        .about-section h2 { color: #4f8cff; font-weight: 700; margin-bottom: 24px; }
+        .features-section { background: #0b1020; color: #e6eaf0; padding: 48px 0; }
+        .features-section h2 { color: #0ea5e9; font-weight: 700; margin-bottom: 24px; }
+        .feature-card { background: #121832; border-radius: 18px; box-shadow: 0 8px 32px #0ea5e922; padding: 32px 24px; transition: transform 0.2s, box-shadow 0.2s; }
+        .feature-card:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 16px 48px #4f8cff44; }
+        .gallery-section { background: #0b1020; color: #e6eaf0; padding: 48px 0; }
+        .gallery-section h2 { color: #ff5c5c; font-weight: 700; margin-bottom: 24px; }
+        .gallery-img { border-radius: 16px; box-shadow: 0 4px 24px #4f8cff22; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+        .gallery-img:hover { transform: scale(1.08); box-shadow: 0 8px 32px #0ea5e944; }
+        .contact-section { background: #121832; color: #e6eaf0; padding: 48px 0; }
+        .contact-section h2 { color: #0ea5e9; font-weight: 700; margin-bottom: 24px; }
+        .form-control, .form-select { background: #0d1228; color: #e6eaf0; border-radius: 10px; border: 1px solid #4f8cff33; }
+        .form-control:focus, .form-select:focus { border-color: #4f8cff; box-shadow: 0 0 0 4px #4f8cff44; }
+        .footer { background: #0b1020; color: #e6eaf0; padding: 32px 0; text-align: center; }
+        .footer .social-icon { font-size: 2rem; margin: 0 12px; color: #4f8cff; transition: text-shadow 0.2s, color 0.2s; }
+        .footer .social-icon:hover { color: #ff5c5c; text-shadow: 0 0 12px #ff5c5c, 0 0 24px #4f8cff; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Crop Portal</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <section class="hero-section" id="hero">
+      <div class="container">
+        <h1>Empowering Agriculture, Connecting People</h1>
+        <p>Discover, buy, and sell fresh crops with ease. Join our vibrant community and experience a new way to connect with agriculture!</p>
+        <a href="index.html" class="btn btn-cta" id="getStartedBtn">Get Started</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="container">
+        <h2>About Crop Portal</h2>
+        <p>Crop Portal is a modern platform designed to bridge the gap between farmers and customers. Our mission is to make crop trading simple, transparent, and accessible for everyone. With advanced features, secure transactions, and a user-friendly interface, we help you grow your business and connect with the right people.</p>
+      </div>
+    </section>
+
+    <!-- Features/Services Section -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <h2>Our Features</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card text-center">
+              <i class="bi bi-bag-check" style="font-size:2.5rem;color:#4f8cff;"></i>
+              <h5 class="mt-3 mb-2">Easy Crop Listings</h5>
+              <p>List your crops with images, videos, and detailed descriptions. Manage your inventory with ease.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card text-center">
+              <i class="bi bi-shield-lock" style="font-size:2.5rem;color:#0ea5e9;"></i>
+              <h5 class="mt-3 mb-2">Secure Transactions</h5>
+              <p>Buy and sell with confidence. Our platform ensures secure payments and data protection.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card text-center">
+              <i class="bi bi-people" style="font-size:2.5rem;color:#ff5c5c;"></i>
+              <h5 class="mt-3 mb-2">Community Support</h5>
+              <p>Connect with other farmers and customers. Share experiences, get help, and grow together.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery/Portfolio Section -->
+    <section class="gallery-section" id="gallery">
+      <div class="container">
+        <h2>Gallery</h2>
+          <div class="d-flex flex-row justify-content-center align-items-center gap-4">
+              <img src="assets/12.jpg" alt="Farming Field" class="img-fluid gallery-img" style="max-width:220px; height:180px; object-fit:cover;">
+              <img src="assets/12.jpg" alt="Crop Sample" class="img-fluid gallery-img" style="max-width:220px; height:180px; object-fit:cover;">
+              <img src="assets/12.jpg" alt="Field View" class="img-fluid gallery-img" style="max-width:220px; height:180px; object-fit:cover;">
+              <img src="assets/12.jpg" alt="Harvest" class="img-fluid gallery-img" style="max-width:220px; height:180px; object-fit:cover;">
+          </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <h2>Contact Us</h2>
+        <form class="row g-3 needs-validation" novalidate>
+          <div class="col-md-6">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" required>
+            <div class="invalid-feedback">Please enter your name.</div>
+          </div>
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required>
+            <div class="invalid-feedback">Please enter a valid email.</div>
+          </div>
+          <div class="col-12">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="4" required></textarea>
+            <div class="invalid-feedback">Please enter your message.</div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-cta w-100" type="submit">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="mb-2">
+          <a href="#" class="social-icon"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="bi bi-linkedin"></i></a>
+        </div>
+        <div>© 2025 Crop Portal. All rights reserved.</div>
+      </div>
+    </footer>
+
+    <!-- Login/Signup Modal -->
+    <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+          <div class="modal-header">
+            <h5 class="modal-title" id="authModalLabel">Sign In / Sign Up</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="authForm">
+              <div class="mb-3">
+                <label for="authRole" class="form-label">Role</label>
+                <select id="authRole" class="form-select" required>
+                  <option value="customer">Customer</option>
+                  <option value="farmer">Farmer</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="authName" class="form-label">Admin Name</label>
+                <input type="text" class="form-control" id="authName" required>
+              </div>
+              <div class="mb-3">
+                <label for="authPassword" class="form-label">Password</label>
+                <input type="password" class="form-control" id="authPassword" required>
+              </div>
+              <div class="mb-3" id="signupPhoneRow" style="display:none;">
+                <label for="authPhone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="authPhone" placeholder="+91XXXXXXXXXX">
+              </div>
+              <div class="mb-3" id="signupConfirmRow" style="display:none;">
+                <label for="authConfirm" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="authConfirm">
+              </div>
+              <div class="mb-3">
+                <button type="submit" class="btn btn-cta w-100" id="authSubmitBtn">Sign In</button>
+              </div>
+              <div class="mb-2 text-center">
+                <button type="button" class="btn btn-link text-info" id="toggleAuthMode">New user? Create an account</button>
+              </div>
+              <div class="text-danger" id="authError"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS & Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script>
+      // Contact form validation
+      (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      })();
+    </script>
+    <script>
+    // Auth modal logic
+    let isSignup = false;
+    document.getElementById('toggleAuthMode').onclick = function() {
+      isSignup = !isSignup;
+      document.getElementById('authSubmitBtn').textContent = isSignup ? 'Create Account' : 'Sign In';
+      document.getElementById('toggleAuthMode').textContent = isSignup ? 'Have an account? Sign in' : 'New user? Create an account';
+      document.getElementById('signupPhoneRow').style.display = isSignup ? '' : 'none';
+      document.getElementById('signupConfirmRow').style.display = isSignup ? '' : 'none';
+    };
+    document.getElementById('authForm').onsubmit = async function(ev) {
+      ev.preventDefault();
+      const role = document.getElementById('authRole').value;
+      const adminName = document.getElementById('authName').value.trim();
+      const password = document.getElementById('authPassword').value;
+      const errorEl = document.getElementById('authError');
+      errorEl.textContent = '';
+      let endpoint = isSignup ? '/api/auth/signup' : '/api/auth/login';
+      let payload = { role, adminName, password };
+      if (isSignup) {
+        const confirm = document.getElementById('authConfirm').value;
+        if (password !== confirm) { errorEl.textContent = 'Passwords do not match.'; return; }
+        const phone = document.getElementById('authPhone').value.trim();
+        if (!phone) { errorEl.textContent = 'Phone number is required.'; return; }
+        payload.phone = phone;
+      }
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Request failed');
+        // Redirect to dashboard
+        window.location.href = role === 'customer' ? 'customer.html' : 'farmer.html';
+      } catch(e) {
+        errorEl.textContent = e.message || 'Error';
+      }
+    };
+    // Show modal on CTA click
+    document.querySelector('.btn-cta').onclick = function() {
+      var modal = new bootstrap.Modal(document.getElementById('authModal'));
+      modal.show();
+    };
+    // Gallery integration
+    async function loadGallery() {
+      try {
+        const res = await fetch('/api/listings');
+        const data = await res.json();
+        if (Array.isArray(data.items)) {
+          const galleryRow = document.querySelector('.gallery-section .row');
+          galleryRow.innerHTML = '';
+          data.items.forEach(item => {
+            if (item.photo_paths && item.photo_paths.length) {
+              item.photo_paths.forEach(photo => {
+                const col = document.createElement('div');
+                col.className = 'col-6 col-md-4 col-lg-3';
+                col.innerHTML = `<img src="${photo}" alt="${item.crop_type || 'Crop'}" class="img-fluid gallery-img">`;
+                galleryRow.appendChild(col);
+              });
+            }
+          });
+        }
+      } catch(e) { /* fallback to static images */ }
+    }
+    loadGallery();
+    </script>
+    <!-- End integration -->
+</body>
+</html>
+
+

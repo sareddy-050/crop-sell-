@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Seller Details | Crop Portal</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="nav">
+            <div class="brand">Seller Details</div>
+            <div>
+                <a href="customer.html" class="btn">Back to Listings</a>
+            </div>
+        </div>
+
+        <div id="sellerDetails" class="grid"></div>
+    </div>
+
+    <script>
+        (async function(){
+            const API_BASE = (window.location && window.location.origin && window.location.origin.indexOf('http') === 0)
+                ? window.location.origin
+                : 'http://localhost:3000';
+            function toJsonSafe(resp){
+                const ct = resp.headers && resp.headers.get && resp.headers.get('content-type');
+                if (ct && ct.indexOf('application/json') === 0) return resp.json();
+                return resp.text().then(()=>{ throw new Error('Non-JSON response'); });
+            }
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            const container = document.getElementById('sellerDetails');
+            if (!id) { container.innerHTML = '<p class="error">Missing listing id</p>'; return; }
+            container.innerHTML = '<p class="muted">Loading...</p>';
+            try {
+                const resp = await fetch(API_BASE + '/api/listings?id=' + encodeURIComponent(id));
+                const data = await toJsonSafe(resp);
+                if (!resp.ok) throw new Error((data && data.error) || 'Failed to load');
+                const item = (data.items && data.items[0]) || null;
+                if (!item) { container.innerHTML = '<p class="muted">Listing not found.</p>'; return; }
+
+                const photos = (item.photos || []).map(src => '<img src="' + src + '" alt="photo" style="width:160px;height:160px;object-fit:cover;border-radius:12px;margin-right:10px;" />').join('');
+                const videos = (item.videos || []).map(src => '<video src="' + src + '" controls style="width:280px;border-radius:12px;margin-right:10px;"></video>').join('');
+
+                container.innerHTML = (
+                    '<div class="panel" style="grid-column: 1 / -1">' +
+                        '<h2 style="margin-top:0">' + item.cropType + (item.isOrganic ? ' (Organic)' : '') + '</h2>' +
+                        '<div class="muted">Price: $' + item.pricePerUnit + '/unit</div>' +
+                        '<div class="muted">Contact: ' + item.contactNumber + '</div>' +
+                        '<div class="muted">Address: ' + item.customerAddress + '</div>' +
+                        '<div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:10px;">' + photos + videos + '</div>' +
+                    '</div>'
+                );
+            } catch(e){
+                container.innerHTML = '<p class="error">' + (e.message || 'Error') + '</p>';
+            }
+        })();
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,186 @@
+/* Global Styles */
+:root {
+  --bg: #1a202c; /* Soft dark gray */
+  --card: #2d3748; /* Dark gray */
+  --text: #f7fafc; /* Soft white */
+  --muted: #ffffff; /* Muted red for accents */
+  --primary: #4fd1c5; /* Soft teal */
+  --primary-dark: #38b2ac; /* Slightly darker teal */
+  --accent: #805ad5; /* Softer purple */
+  --danger: #f56565; /* Soft red */
+  --ring: rgba(72, 85, 99, 0.4); /* Light gray ring */
+  --light: rgba(72, 187, 136, 0.1); /* Light green for soft background */
+  --shadow-light: rgba(0, 0, 0, 0.1); /* Light shadow */
+  --shadow-dark: rgba(0, 0, 0, 0.3); /* Stronger shadow */
+}
+
+body {
+  background: linear-gradient(135deg, var(--bg) 20%, var(--light) 80%);
+  color: var(--text);
+  font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Card Style */
+.login-card {
+  background: var(--card);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px var(--shadow-dark);
+  padding: 48px 36px;
+  max-width: 420px;
+  margin: 64px auto;
+  animation: fadeInUp 0.6s ease;
+  transition: all 0.4s ease;
+}
+
+.login-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px var(--shadow-dark);
+}
+
+/* Buttons */
+.btn {
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  color: #2d3748; /* Dark gray text */
+  box-shadow: 0 4px 14px rgba(72,189,195,0.4);
+}
+
+.btn.primary:hover {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(72,189,195,0.55);
+}
+
+.btn.danger {
+  background: linear-gradient(90deg, var(--danger) 0%, #c53030 100%);
+  color: #fff;
+}
+
+.btn.danger:hover {
+  background: linear-gradient(90deg, #c53030 0%, var(--danger) 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(245,101,101,0.55);
+}
+
+/* Panels */
+.panel {
+  border-radius: 18px;
+  padding: 24px;
+  background: linear-gradient(120deg, rgba(202, 90, 29, 0.08) 0%, rgba(157, 41, 16, 0.08) 100%);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 28px var(--shadow-light);
+}
+
+.panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px var(--shadow-dark);
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin-bottom: 18px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* Navbar */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, var(--primary-dark) 0%, var(--accent) 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(72,189,195,0.35);
+  padding: 20px 28px;
+  margin-bottom: 36px;
+  animation: fadeIn 0.8s ease;
+}
+
+.brand {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #fff;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Forms */
+.form {
+  display: grid;
+  gap: 18px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.form-select,
+.form-control {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: #1a202c;
+  color: var(--text);
+  transition: border 0.2s, box-shadow 0.2s;
+  font-size: 1rem;
+}
+
+.form-select:focus,
+.form-control:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover Effects */
+a:hover,
+button:hover {
+  transition: all 0.3s ease-out;
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px var(--shadow-dark);
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login | Crop Portal</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="icon" href="data:,">
+    <style>
+        .home-btn {
+            background: linear-gradient(90deg, #ff4d4d 0%, #ffb347 100%);
+            color: #fff;
+            padding: 12px 32px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 2px 12px #ff4d4d33;
+            transition: background 0.2s, box-shadow 0.2s;
+            border: none;
+            outline: none;
+            display: inline-block;
+        }
+        .home-btn:hover, .home-btn:focus {
+            background: linear-gradient(90deg, #ffb347 0%, #ff4d4d 100%);
+            box-shadow: 0 4px 18px #ffb34755;
+            color: #fff;
+        }
+        .home-btn-row {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 32px;
+            margin-bottom: 12px;
+        }
+    </style>
+</head>
+<body class="login-page">
+    <div class="home-btn-row">
+        <a href="modren-template.html" class="home-btn">Home</a>
+    </div>
+    <div class="hero">
+        <h1 class="hero-title">Welcome to Crop Portal</h1>
+        <p class="hero-desc">Empowering Farmers & Customers. Discover, buy, and sell fresh crops with ease.<br>Join our vibrant community and experience a new way to connect with agriculture!</p>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h1 class="title">Sign In to Your Account</h1>
+            <p class="subtitle">Access your dashboard and manage your crops</p>
+
+            <form id="loginForm" class="form" autocomplete="on">
+                <div class="form-row">
+                    <label for="role">Role</label>
+                    <select id="role" name="role" required>
+                        <option value="">Select role</option>
+                        <option value="customer">Customer</option>
+                        <option value="farmer">Farmer</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="adminName">Admin name</label>
+                    <input id="adminName" name="adminName" type="text" placeholder="e.g., agrimanager" required>
+                </div>
+
+                <div class="form-row">
+                    <label for="password">Password</label>
+                    <input id="password" name="password" type="password" placeholder="••••••••" required>
+                </div>
+                <a href="#" id="forgotPasswordLink" style="display:block;margin-bottom:10px;">Forgot Password?</a>
+
+                <div id="signupExtra" class="form-row" style="display:none">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Repeat password">
+                </div>
+
+                <div id="phoneRow" class="form-row">
+                    <label for="phone">Phone Number</label>
+                    <input id="phone" name="phone" type="tel" placeholder="+91XXXXXXXXXX" pattern="\+91[6-9][0-9]{9}" title="Enter a valid Indian phone number (+91XXXXXXXXXX)" value="+91" oninput="if(!this.value.startsWith('+91'))this.value='+91';" style="display:none;" disabled>
+                </div>
+
+                <button type="submit" class="btn primary full" id="submitBtn">Sign In</button>
+                <button type="button" id="googleBtn" class="btn full" style="margin-top:8px">Continue with Google</button>
+                <p id="loginError" class="error" role="alert" aria-live="polite"></p>
+            </form>
+
+            <div class="hint">
+                <button id="toggleMode" class="btn" style="margin-top:8px">New user? Create an account</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/app.js"></script>
+</body>
+</html>
+
+

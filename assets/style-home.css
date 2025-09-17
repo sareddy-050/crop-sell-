@@ -1,0 +1,37 @@
+/* Home Page Styles */
+:root {
+  --bg: #000;
+  --card: #181818;
+  --muted: #b0b0b0;
+  --text: #fff;
+  --primary: #ff2d2d;
+  --primary-600: #d80000;
+  --danger: #ff2d2d;
+  --ring: rgba(255, 45, 45, 0.4);
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  margin: 0;
+}
+.btn-home {
+  background: linear-gradient(90deg, #ff2d2d 0%, #d80000 100%);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 32px;
+  box-shadow: 0 2px 8px #ff2d2d44;
+  font-size: 1.1rem;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.btn-home:hover {
+  background: linear-gradient(90deg, #d80000 0%, #ff2d2d 100%);
+  box-shadow: 0 4px 16px #ff2d2d44;
+  color: #fff;
+}
+.gallery img {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #ff2d2d44;
+}

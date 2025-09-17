@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Crop Listing</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        body { background: #181818; color: #fff; }
+        .edit-container { max-width: 600px; margin: 40px auto; background: #232323; padding: 32px; border-radius: 18px; }
+        .edit-title { font-size: 2rem; margin-bottom: 18px; }
+        .form-row { margin-bottom: 16px; }
+        .form-row label { display: block; margin-bottom: 6px; font-weight: bold; }
+        .form-row input, .form-row select { width: 100%; padding: 8px; border-radius: 6px; border: none; }
+        .gallery img, .gallery video { margin: 6px; border-radius: 8px; max-width: 120px; max-height: 120px; object-fit: cover; }
+        .btn { margin-top: 18px; }
+        .back-btn { margin-top: 20px; display: inline-block; background: #ff4d4d; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .back-btn:hover { background: #d32f2f; }
+        .error { color: #ff4d4d; }
+        .success { color: #4caf50; }
+    </style>
+</head>
+<body>
+    <div class="edit-container">
+        <div class="edit-title">Edit Crop Listing</div>
+        <form id="editListingForm">
+            <div class="form-row">
+                <label for="editPrice">Price per Unit ($)</label>
+                <input id="editPrice" type="number" min="0" step="0.01" required>
+            </div>
+            <div class="form-row">
+                <label for="editContact">Contact Number</label>
+                <input id="editContact" type="text" required pattern="[0-9+\- ]{7,15}">
+            </div>
+            <div class="form-row">
+                <label for="editAddress">Address</label>
+                <input id="editAddress" type="text" required>
+            </div>
+            <div class="form-row">
+                <label for="editOrganic">Organic</label>
+                <select id="editOrganic">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="form-row">
+                <label>Images</label>
+                <div id="editPhotosPreview" class="gallery"></div>
+                <input id="editPhotos" type="file" accept="image/*" multiple>
+            </div>
+            <div class="form-row">
+                <label>Videos</label>
+                <div id="editVideosPreview" class="gallery"></div>
+                <input id="editVideos" type="file" accept="video/*" multiple>
+            </div>
+            <button type="submit" class="btn primary">Save Changes</button>
+            <p id="editListingError" class="error" role="alert"></p>
+            <p id="editListingSuccess" class="success" role="alert"></p>
+        </form>
+        <a href="farmer.html" class="back-btn">Back</a>
+    </div>
+    <script>
+        const API_BASE = 'http://localhost:3000';
+        const item = JSON.parse(localStorage.getItem('editListing') || '{}');
+        if (!item || !item.id) {
+            document.getElementById('editListingForm').innerHTML = '<p class="error">No listing data found.</p>';
+        } else {
+            document.getElementById('editPrice').value = item.pricePerUnit || '';
+            document.getElementById('editContact').value = item.contactNumber || '';
+            document.getElementById('editAddress').value = item.customerAddress || '';
+            document.getElementById('editOrganic').value = item.isOrganic ? '1' : '0';
+            // Show existing images
+            const photosPreview = document.getElementById('editPhotosPreview');
+            (item.photos || []).forEach(function(src, idx) {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'photo';
+                img.title = 'Remove';
+                img.style.cursor = 'pointer';
+                img.onclick = function() {
+                    item._deletedImages = (item._deletedImages || []).concat([src]);
+                    item.photos.splice(idx, 1);
+                    img.remove();
+                };
+                photosPreview.appendChild(img);
+            });
+            // Show existing videos
+            const videosPreview = document.getElementById('editVideosPreview');
+            (item.videos || []).forEach(function(src, idx) {
+                const vid = document.createElement('video');
+                vid.src = src;
+                vid.controls = true;
+                vid.title = 'Remove';
+                vid.style.cursor = 'pointer';
+                vid.onclick = function() {
+                    item._deletedVideos = (item._deletedVideos || []).concat([src]);
+                    item.videos.splice(idx, 1);
+                    vid.remove();
+                };
+                videosPreview.appendChild(vid);
+            });
+            // Save changes
+            document.getElementById('editListingForm').addEventListener('submit', async function(ev) {
+                ev.preventDefault();
+                document.getElementById('editListingError').textContent = '';
+                document.getElementById('editListingSuccess').textContent = '';
+                const newPrice = document.getElementById('editPrice').value;
+                const newContact = document.getElementById('editContact').value;
+                const newAddress = document.getElementById('editAddress').value;
+                const newOrganic = document.getElementById('editOrganic').value;
+                const newPhotos = document.getElementById('editPhotos').files;
+                const newVideos = document.getElementById('editVideos').files;
+                if (!newPrice || isNaN(newPrice) || Number(newPrice) <= 0) {
+                    document.getElementById('editListingError').textContent = 'Enter a valid price.'; return;
+                }
+                if (!newContact || newContact.length < 7) {
+                    document.getElementById('editListingError').textContent = 'Enter a valid contact number.'; return;
+                }
+                if (!newAddress) {
+                    document.getElementById('editListingError').textContent = 'Address is required.'; return;
+                }
+                // Prepare FormData
+                var fd = new FormData();
+                const authUser = localStorage.getItem('authUser') || '';
+                fd.append('farmerEmail', item.farmerEmail || authUser);
+                fd.append('pricePerUnit', newPrice.trim());
+                fd.append('contactNumber', newContact.trim());
+                fd.append('customerAddress', newAddress.trim());
+                fd.append('isOrganic', Number(newOrganic));
+                fd.append('deletedImages', JSON.stringify(item._deletedImages || []));
+                fd.append('deletedVideos', JSON.stringify(item._deletedVideos || []));
+                for (var i = 0; i < newPhotos.length; ++i) fd.append('photos', newPhotos[i]);
+                for (var i = 0; i < newVideos.length; ++i) fd.append('videos', newVideos[i]);
+                try {
+                    const resp = await fetch(API_BASE + '/api/listings/' + encodeURIComponent(item.id), {
+                        method: 'PATCH',
+                        body: fd
+                    });
+                    const dataUpd = await resp.json();
+                    if (!resp.ok) throw new Error(dataUpd && dataUpd.error || 'Failed to update');
+                    document.getElementById('editListingSuccess').textContent = 'Saved!';
+                    setTimeout(function(){ window.location.href = 'farmer.html'; }, 900);
+                } catch(e) {
+                    document.getElementById('editListingError').textContent = e.message || 'Error';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

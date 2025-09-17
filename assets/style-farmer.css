@@ -1,0 +1,230 @@
+/* Farmer Dashboard Styles */
+:root {
+  --bg: #f4f7fa; /* light background */
+  --card: #ffffff; /* white card */
+  --muted: #888888; /* muted text color */
+  --text: #333333; /* dark text */
+  --primary: #ff6f61; /* coral red */
+  --secondary: #4caf50; /* green */
+  --accent: #ffc107; /* amber */
+  --primary-600: #ff5722; /* darker coral red */
+  --danger: #ff3b30; /* red */
+  --ring: rgba(255, 105, 105, 0.4);
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.2);
+  --card-shadow: rgba(0, 0, 0, 0.15); /* softer card shadow */
+}
+
+/* Global Styles */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Poppins', 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dashboard {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background: linear-gradient(135deg, rgba(255, 241, 218, 0.9), rgba(255, 220, 186, 0.7)),
+    url('../assets/12.jpg') center/cover no-repeat fixed;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px var(--shadow-dark);
+  padding: 40px;
+  color: var(--text);
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', 'Arial', sans-serif;
+  color: var(--primary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* Card Styles */
+.card {
+  background: var(--card);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  padding: 20px;
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--shadow-dark);
+}
+
+.card-header {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.card-body {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* Button Styles */
+.btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--primary-600);
+  box-shadow: 0 6px 18px var(--shadow-dark);
+  transform: translateY(-4px);
+}
+
+.btn.secondary {
+  background: var(--secondary);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.btn.secondary:hover {
+  background: #388e3c;
+  box-shadow: 0 6px 18px rgba(76, 175, 80, 0.4);
+  transform: translateY(-4px);
+}
+
+.btn.accent {
+  background: var(--accent);
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.btn.accent:hover {
+  background: #ff9800;
+  box-shadow: 0 6px 18px rgba(255, 193, 7, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Form Styles */
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.form-control {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: var(--text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary);
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.navbar .brand {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar .links {
+  display: flex;
+  gap: 20px;
+}
+
+.navbar .links a {
+  color: #fff;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar .links a:hover {
+  color: var(--accent);
+}
+
+/* Panels */
+.panel {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px var(--shadow-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px var(--shadow-dark);
+}
+
+.panel-header {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 16px;
+}
+
+.panel-body {
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Card Animation */
+.card, .panel {
+  animation: fadeInUp 0.6s ease;
+}
+
+/* Add some space between elements */
+.container {
+  margin-bottom: 40px;
+}

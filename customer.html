@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Customer Dashboard | Crop Portal</title>
+    <link rel="stylesheet" href="assets/style-customer.css">
+</head>
+<body data-role="customer">
+    <div class="dashboard">
+        <div class="nav">
+            <div class="brand">Customer Dashboard</div>
+            <div>
+                <span class="muted">Signed in as </span><strong data-username>Customer</strong>
+                <button id="logoutBtn" class="btn" style="margin-left: 12px;">Logout</button>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="panel">
+                <h3>Available Crops</h3>
+                <div id="cropList">Loading crops...</div>
+            </div>
+            <div class="panel">
+                <h3>Filters</h3>
+                <div class="form">
+                    <div class="form-row">
+                        <label for="filterOrganic">Organic</label>
+                        <select id="filterOrganic">
+                            <option value="any">Any</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="filterQuery">Search</label>
+                        <input id="filterQuery" placeholder="e.g., tomatoes">
+                    </div>
+                    <button id="applyFilters" class="btn">Apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/app.js"></script>
+    </body>
+    </html>
+
+

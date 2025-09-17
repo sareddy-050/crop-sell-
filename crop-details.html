@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Details</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <style>
+        .details-container { max-width: 600px; margin: 40px auto; background: #181818cc; padding: 32px; border-radius: 18px; color: #fff; }
+        .details-title { font-size: 2rem; margin-bottom: 12px; }
+        .details-row { margin-bottom: 10px; }
+        .details-label { font-weight: bold; color: #ff4d4d; }
+        .details-gallery img, .details-gallery video { margin: 6px; border-radius: 8px; max-width: 120px; max-height: 120px; object-fit: cover; }
+        .back-btn { margin-top: 20px; display: inline-block; background: #ff4d4d; color: #fff; padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: bold; }
+        .back-btn:hover { background: #d32f2f; }
+    </style>
+</head>
+<body>
+    <div class="details-container" id="cropDetails"></div>
+    <script>
+        // Get crop details from localStorage
+        const crop = JSON.parse(localStorage.getItem('selectedCrop') || '{}');
+        const container = document.getElementById('cropDetails');
+        if (!crop || !crop.cropType) {
+            container.innerHTML = '<p>No crop details found.</p><a href="customer.html" class="back-btn">Back</a>';
+        } else {
+            container.innerHTML = `
+                <div class="details-title">${crop.cropType || ''}</div>
+                <div class="details-row"><span class="details-label">Price per Unit:</span> $${crop.pricePerUnit || ''}</div>
+                <div class="details-row"><span class="details-label">Organic:</span> ${crop.isOrganic ? 'Yes' : 'No'}</div>
+                <div class="details-row"><span class="details-label">Seller Name:</span> ${crop.farmerName || ''}</div>
+                <div class="details-row"><span class="details-label">Contact Number:</span> ${crop.contactNumber || ''}</div>
+                <div class="details-row"><span class="details-label">Address:</span> ${crop.customerAddress || ''}</div>
+                <div class="details-row"><span class="details-label">Created At:</span> ${crop.createdAt || ''}</div>
+                <div class="details-row details-gallery">
+                    ${(crop.photos || []).map(src => `<img src="${src}" alt="photo">`).join('')}
+                    ${(crop.videos || []).map(src => `<video src="${src}" controls></video>`).join('')}
+                </div>
+                <a href="customer.html" class="back-btn">Back</a>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Farmer Dashboard | Crop Portal</title>
+    <link rel="stylesheet" href="assets/style-farmer.css">
+</head>
+<body data-role="farmer" style="background: linear-gradient(120deg, #0ea5e9 0%, #4f8cff 100%); min-height: 100vh;">
+    <div class="dashboard">
+        <div class="nav" style="background: linear-gradient(90deg, #4f8cff 0%, #0ea5e9 100%); border-radius: 16px; box-shadow: 0 2px 8px #0ea5e944; padding: 18px 24px; margin-bottom: 32px;">
+            <div class="brand" style="color: #fff; font-size: 1.5rem; font-weight: 700; letter-spacing: 1px;">Farmer Dashboard</div>
+            <div>
+                <span class="muted">Signed in as </span><strong data-username style="color: #fff;">Farmer</strong>
+                <button id="logoutBtn" class="btn primary" style="margin-left: 12px;">Logout</button>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="panel" style="background: linear-gradient(120deg, #0ea5e933 0%, #4f8cff33 100%); box-shadow: 0 8px 32px #0ea5e922;">
+                <h3 style="color: #0ea5e9;">Add Crop Listing</h3>
+                <form id="listingForm" class="form">
+                    <div class="form-row">
+                        <label for="farmerName">Your Name</label>
+                        <input id="farmerName" name="farmerName" type="text" class="form-control" placeholder="e.g., Ramesh" required>
+                    </div>
+                    <div class="form-row">
+                        <label for="cropType">Type of Crop</label>
+                        <input id="cropType" name="cropType" type="text" class="form-control" required placeholder="e.g., Tomatoes">
+                    </div>
+                    <div class="form-row">
+                        <label for="pricePerUnit">Price to Sell (per unit)</label>
+                        <input id="pricePerUnit" name="pricePerUnit" type="number" class="form-control" step="0.01" min="0" required placeholder="e.g., 2.50">
+                    </div>
+                    <div class="form-row">
+                        <label for="contactNumber">Contact Number</label>
+                        <input id="contactNumber" name="contactNumber" type="tel" class="form-control" required placeholder="+91XXXXXXXXXX" pattern="\+91[6-9][0-9]{9}" title="Enter a valid Indian phone number (+91XXXXXXXXXX)" value="+91" oninput="if(!this.value.startsWith('+91'))this.value='+91';">
+                    </div>
+                    <div class="form-row">
+                        <label for="customerAddress">Customer Address</label>
+                        <input id="customerAddress" name="customerAddress" type="text" class="form-control" required placeholder="Delivery address">
+                    </div>
+                    <div class="form-row">
+                        <label for="isOrganic">Organic</label>
+                        <select id="isOrganic" name="isOrganic" class="form-select">
+                            <option value="1">Yes</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label for="photos">Photos (up to 6)</label>
+                        <input id="photos" name="photos" type="file" class="form-control" accept="image/*" multiple>
+                    </div>
+                    <div class="form-row">
+                        <label for="videos">Videos (up to 2)</label>
+                        <input id="videos" name="videos" type="file" class="form-control" accept="video/*" multiple>
+                    </div>
+                    <button type="submit" class="btn primary">Publish Listing</button>
+                    <p id="listingError" class="error" role="alert"></p>
+                </form>
+            </div>
+            <div class="panel" style="background: linear-gradient(120deg, #4f8cff33 0%, #0ea5e933 100%); box-shadow: 0 8px 32px #4f8cff22;">
+                <h3 style="color: #4f8cff;">Your Listings</h3>
+                <div id="listings"></div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/app.js"></script>
+</body>
+</html>
+
+
